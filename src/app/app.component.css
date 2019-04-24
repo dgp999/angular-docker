@@ -1,0 +1,18 @@
+.mai-top-header {
+    border: 0;
+    margin-bottom: 0;
+    background-color: #232527;
+    padding: 0;
+}
+
+.navbar-expand {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    border-radius: 0px;
+}
+

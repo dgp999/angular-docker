@@ -1,0 +1,80 @@
+<style>
+  *:focus{outline:none}
+  /* .mai-sub-header .navbar-nav>.nav-item>.nav-link:hover {
+    background-color: transparent;
+    color: black;
+  } */
+  a.nav-link.active:hover {
+   color: #00aae7 !important;
+ }
+</style>
+<nav class="navbar navbar-expand navbar-dark mai-top-header">
+  <div class="container">
+  </div>
+</nav>
+<nav  *ngIf="!path()" class="navbar navbar-expand-lg mai-sub-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-md">
+      <button type="button" data-toggle="collapse" data-target="#mai-navbar-collapse" aria-controls="#mai-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler hidden-md-up collapsed">
+                  <div class="icon-bar"><span></span><span></span><span></span></div>
+                </button>
+      <div id="mai-navbar-collapse" class="navbar-collapse collapse mai-nav-tabs">
+        <ul class="nav navbar-nav forHeader">
+          <style>
+            .forHeader .nav-link:hover {
+              color: #232527;
+            }
+          </style>
+          <li style="cursor: pointer;"  [ngClass]="listData == 'Employee' ? 'nav-item parent open' : 'nav-item parent'" ><a (click)="showList('Employee')"  role="button" aria-expanded="false" class="nav-link"  ><span class="icon s7-user"></span><span>Employee</span></a>
+            <ul *ngIf="listData === 'Employee'" class="mai-nav-tabs-sub mai-sub-nav nav">
+              <li class="nav-item" (click)="showsublist('Dashboard')" ><a class="nav-link"  routerLinkActive="'nav-link active"  routerLink="/home/dashboard"><span class="icon s7-home"></span><span class="name">Dashboard</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Referrals')" ><a class="nav-link"  routerLinkActive="'nav-link active" routerLink="/home/referral"><span class="icon s7-back"></span><span class="name">Referrals</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Suggestions')" ><a class="nav-link"  routerLinkActive="'nav-link active" routerLink="/home/suggestions"><span class="icon s7-box1"></span><span class="name">Suggestions</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Upcoming Events')"><a class="nav-link"  routerLinkActive="'nav-link active"  routerLink="/home/event-nomination" ><span class="icon s7-albums"></span><span  class="name">Upcoming Events</span></a>
+              </li>
+            </ul>
+          </li>
+          <li style="cursor: pointer;"  [ngClass]="listData == 'Standards' ? 'nav-item parent open' : 'nav-item parent'"  ><a (click)="showList('Standards')"  role="button" aria-expanded="false" class="nav-link" ><span class="icon s7-box2"></span><span >Standards</span></a>
+            <ul *ngIf="listData ==='Standards'" class="mai-nav-tabs-sub mai-sub-nav nav">
+              <li class="nav-item" (click)="showsublist('Corporate')"><a class="nav-link" routerLinkActive="'nav-link active" routerLink="/home/corporate-standards" ><span class="icon s7-culture"></span><span class="name">Corporate</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Social Policy')"><a class="nav-link"  routerLinkActive="'nav-link active" routerLink="/home/social-media-policy"><span class="icon s7-global"></span><span class="name">Social Policy</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Email Signature')"><a class="nav-link"  routerLinkActive="'nav-link active" routerLink="/home/signature"><span class="icon s7-mail-open"></span><span class="name">Email Signature</span></a>
+              </li>
+             </ul>
+          </li>
+          <li style="cursor: pointer;"  [ngClass]="listData == 'Resources' ? 'nav-item parent open' : 'nav-item parent'"  ><a (click)="showList('Resources')" role="button" aria-expanded="false" class="nav-link" ><span class="icon s7-notebook"></span><span >Resources</span></a>
+            <ul *ngIf="listData === 'Resources'" class="mai-nav-tabs-sub mai-sub-nav nav">
+              <li class="nav-item" (click)="showsublist('Library Assets')"><a class="nav-link"  routerLinkActive="'nav-link active"  routerLink="/home/library"><span class="icon s7-albums"></span><span class="name">Library Assets</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Internal Depot')"><a class="nav-link"  routerLinkActive="'nav-link active" routerLink="/home/depot"><span class="icon s7-video"></span><span class="name">Internal Depot</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Documents')"><a  class="nav-link"  routerLinkActive="'nav-link active"  routerLink="/home/documents" [routerLinkActiveOptions]="{exact: true}"><span class="icon s7-display1" ><a [routerLink]="['/home/document-preview']"></a></span><span  class="name">Documents</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Documents')"><a  class="nav-link"  routerLinkActive="'nav-link active"  routerLink="/home/idea-hub"><span class="icon s7-light" ></span><span  class="name">Idea Hub</span></a>
+              </li>
+              <!-- <li class="nav-item" (click)="showsublist('Documents')"><a  class="nav-link"><span class="icon s7-light" ></span><span  class="name">Idea Hub</span></a>
+              </li> -->
+             </ul>
+          </li>
+          <li style="cursor: pointer;"  [ngClass]="listData == 'Your Apps' ? 'nav-item parent open' : 'nav-item parent'" ><a (click)="showList('Your Apps')"  role="button" aria-expanded="false" class="nav-link" ><span class="icon s7-portfolio"></span><span >Your Apps</span></a>
+            <ul *ngIf="listData === 'Your Apps'" class="mai-nav-tabs-sub mai-sub-nav nav">
+              <li class="nav-item" (click)="showsublist('Miracle Me')"><a [ngClass]="sublistData3 == 'Miracle Me' ? 'nav-link active' : 'nav-link'" href="https://www.miraclesoft.com/miracleme/" target='_blank'><span  class="icon s7-phone"></span><span  class="name">Miracle Me</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Hubble')" ><a [ngClass]="sublistData3 == 'Hubble' ? 'nav-link active' : 'nav-link'" href="https://www.miraclesoft.com/Hubble/" target='_blank'><span  class="icon s7-display1"></span><span  class="name">Hubble</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('mTalk')"><a class="nav-link"  routerLinkActive="'nav-link active" routerLink="/home/m-talk"><span  class="s7-chat"></span><span class="name"> mTalk</span></a>
+              </li>
+              <li class="nav-item" (click)="showsublist('Blog')"><a [ngClass]="sublistData3 == 'Blog(Coming Soon!)' ? 'nav-link active' : 'nav-link'"  href="https://blog.miraclesoft.com/" target='_blank'><span  class="s7-bookmarks"></span><span class="name"> Blog</span></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</nav>
